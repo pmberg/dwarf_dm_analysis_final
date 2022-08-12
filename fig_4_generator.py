@@ -63,4 +63,4 @@ for gal_name_inx, gal in enumerate(gal_names):
         axs[gal_name_inx, sample_inx].legend()
         axs[gal_name_inx, sample_inx].set_ylabel("Relative likelihoood (arbitrary)")
         fig.tight_layout()
-fig.savefig("fig_4_07.pdf", dpi = 300)
+fig.savefig("fig_4_07.png", dpi = 300)

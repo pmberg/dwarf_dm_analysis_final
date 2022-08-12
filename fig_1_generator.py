@@ -25,7 +25,7 @@ def make_gal_hexbin(gal_dir, species, bounds = 100):
     """
     plt.clf()
     #then make a figure with three plots
-    fig, axs = plt.subplots(1, 3, figsize = (16,5))
+    fig, axs = plt.subplots(1, 3, figsize = (12,3))
     snapshot = gizmo.io.Read.read_snapshots([species], 'redshift', 0, gal_dir)
     particle_positions_cartesian = snapshot[species].prop("host.distance")
     ax0_coords_original = particle_positions_cartesian[:,0]
@@ -55,9 +55,10 @@ def make_gal_hexbin(gal_dir, species, bounds = 100):
 
     
     #create a color bar
+    plt.tight_layout()
     cbar = plt.colorbar(hb3, ax=axs.ravel().tolist(), aspect = 10)
     cbar.set_label(r'Count', fontsize = 18)
-    plt.savefig("fig_01_test_02.pdf")
+    plt.savefig("fig_01_test_02.png")
 
 
 

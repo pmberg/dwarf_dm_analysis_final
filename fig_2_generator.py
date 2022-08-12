@@ -27,11 +27,11 @@ def make_corner_plot(file_dir_name, final_title, final_photo_name):
     for x in range(ndim):
         if x != 1:
             labels[x] = "log " + labels[x]
-    labels[0] = "$\mathrm{log}(r_dm)\; \mathrm{(kpc)}$"
+    labels[0] = "$\mathrm{log}(r_{dm})\; \mathrm{(kpc)}$"
     labels[1] = "$\gamma\; \mathrm{(unitless)}$"
     labels[2] = "$\mathrm{log}(ρ_0)\;(M_☉/kpc^3)$"
     labels[3] = "$\mathrm{log}(L) \;(L_☉)$"
-    labels[4] = "$\mathrm{log}(r_{})\; \mathrm{(kpc)}$"
+    labels[4] = "$\mathrm{log}(r_{*})\; \mathrm{(kpc)}$"
     fig1 = corner.corner(samples, labels=labels)
     print(samples)
     print(labels)
@@ -49,7 +49,7 @@ galsize = 1000
 gal_name = "m10q_res30"
 gal_count = "01"
 file_dir = "jeans_results/" + gal_name + "_size" + str(galsize) + "_" + gal_count + "/jeans_result.json"
-final_photo_name = "fig_02_v3.pdf"
+final_photo_name = "fig_02_v3.png"
 final_title = "Figure 2"
 make_corner_plot(file_dir, final_title, final_photo_name)
 

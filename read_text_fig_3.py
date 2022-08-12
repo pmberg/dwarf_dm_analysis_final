@@ -82,4 +82,4 @@ for spec_name in species_dict:
         line_style = sims_dict[gal_name] + species_dict[spec_name]
         plt.plot(gal_dict[gal_name][spec_name][0], gal_dict[gal_name][spec_name][1], line_style, label = gal_name + " " + spec_name)
 plt.legend(ncol = 2, prop={'size': 10})
-plt.savefig("/work2/08710/pmberg/stampede2/fig_03_test_02.pdf")
+plt.savefig("/work2/08710/pmberg/stampede2/fig_03_test_02.png")

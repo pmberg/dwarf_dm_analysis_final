@@ -65,23 +65,38 @@ while line_inx < linecount:
 
 
 
-fig, axs = plt.subplots(1,5, figsize = (15, 4))
+#fig, axs = plt.subplots(1,5, figsize = (15, 4))
 gal_name_list = ("m09_res30", "m10q_res30", "m10q_res250", "m10v_res30", "m10v_res250")
-for gal_name_inx, gal in enumerate(gal_name_list):
+
+fig, axs = plt.subplots(2,3, figsize=(12,8))
+axs[1][2].set_visible(False)
 
 
-    axs[gal_name_inx].plot(gal_dict[gal]["estimate_radii"], gal_dict[gal]["percent_50"], label = "Median estimate")  
-    axs[gal_name_inx].fill_between(gal_dict[gal]["estimate_radii"], gal_dict[gal]["percent_16"], gal_dict[gal]["percent_84"], alpha=0.7, label = "1σ CI")
-    axs[gal_name_inx].set_xlabel("r(kpc)")
-    axs[gal_name_inx].set_ylabel("$ρ(r)(M_☉/kpc^3)$")
-    axs[gal_name_inx].set_xscale("log")
-    axs[gal_name_inx].set_yscale("log")
-    axs[gal_name_inx].set_title(gal)
-    axs[gal_name_inx].plot(gal_dict[gal]["density_radii"], gal_dict[gal]["densities"], label = "True density")
-    axs[gal_name_inx].legend()
+
+
+for gal_name_inx, gal in enumerate(gal_name_list[:3]):
+    axs[0][gal_name_inx].plot(gal_dict[gal]["estimate_radii"], gal_dict[gal]["percent_50"], label = "Median estimate")  
+    axs[0][gal_name_inx].fill_between(gal_dict[gal]["estimate_radii"], gal_dict[gal]["percent_16"], gal_dict[gal]["percent_84"], alpha=0.7, label = "1σ CI")
+    axs[0][gal_name_inx].set_xlabel("r(kpc)")
+    axs[0][gal_name_inx].set_ylabel("$ρ(r)(M_☉/kpc^3)$")
+    axs[0][gal_name_inx].set_xscale("log")
+    axs[0][gal_name_inx].set_yscale("log")
+    axs[0][gal_name_inx].set_title(gal)
+    axs[0][gal_name_inx].plot(gal_dict[gal]["density_radii"], gal_dict[gal]["densities"], label = "True density")
+    axs[0][gal_name_inx].legend()
     #title_str = "Figure 5: Estimated versus actual density profile for " + gal + " galaxy"
+for gal_name_inx, gal in enumerate(gal_name_list[3:]):
+    axs[1][gal_name_inx-3].plot(gal_dict[gal]["estimate_radii"], gal_dict[gal]["percent_50"], label = "Median estimate")  
+    axs[1][gal_name_inx-3].fill_between(gal_dict[gal]["estimate_radii"], gal_dict[gal]["percent_16"], gal_dict[gal]["percent_84"], alpha=0.7, label = "1σ CI")
+    axs[1][gal_name_inx-3].set_xlabel("r(kpc)")
+    axs[1][gal_name_inx-3].set_ylabel("$ρ(r)(M_☉/kpc^3)$")
+    axs[1][gal_name_inx-3].set_xscale("log")
+    axs[1][gal_name_inx-3].set_yscale("log")
+    axs[1][gal_name_inx-3].set_title(gal)
+    axs[1][gal_name_inx-3].plot(gal_dict[gal]["density_radii"], gal_dict[gal]["densities"], label = "True density")
+    axs[1][gal_name_inx-3].legend()
 #fig.suptitle(title_str)
 fig.tight_layout()
-fig.savefig("fig_5_v3.pdf", dpi = 300)
-
-
+axs[1][0].set_position([0.24,0.125,0.228,0.343])
+axs[1][1].set_position([0.55,0.125,0.228,0.343])
+fig.savefig("fig_5_v4.png", dpi = 300)
